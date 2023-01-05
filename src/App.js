@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Header from "./components/Header";
 import Index from "./components/Drawer"
 import axios from "axios";
-import { Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import AppContext from "./context";
@@ -100,59 +100,62 @@ const App = () => {
     }
 
     return (
-        <AppContext.Provider value={{
-            items,
-            cartItems,
-            favorites,
-            isItemAdded,
-            onAddToFavorite,
-            onAddToCart,
-            setCartOpened,
-            setCartItems }}
-        >
-            <div className='wrapper clear'>
-                <Index
-                    items={cartItems}
-                    onClose={() => setCartOpened(false)}
-                    onRemove={onRemoveItem}
-                    opened={cartOpened}
-                />
-                <Header
-                    onClickCart={() => setCartOpened(true)}
-                />
+        <BrowserRouter basename='/'>
+            <AppContext.Provider value={{
+                items,
+                cartItems,
+                favorites,
+                isItemAdded,
+                onAddToFavorite,
+                onAddToCart,
+                setCartOpened,
+                setCartItems }}
+            >
+                <div className='wrapper clear'>
+                    <Index
+                        items={cartItems}
+                        onClose={() => setCartOpened(false)}
+                        onRemove={onRemoveItem}
+                        opened={cartOpened}
+                    />
+                    <Header
+                        onClickCart={() => setCartOpened(true)}
+                    />
 
-                <Routes>
-                    <Route
-                        path=''
-                        exact
-                        element={<Home
-                            items={items}
-                            cartItems={cartItems}
-                            searchValue={searchValue}
-                            setSearchValue={setSearchValue}
-                            onAddToFavorite={onAddToFavorite}
-                            onChangeSearchInput={onChangeSearchInput}
-                            onAddToCart={onAddToCart}
-                            isLoading={isLoading}
+                    <Routes>
+                        <Route
+                            path='/'
+                            exact
+                            element={<Home
+                                items={items}
+                                cartItems={cartItems}
+                                searchValue={searchValue}
+                                setSearchValue={setSearchValue}
+                                onAddToFavorite={onAddToFavorite}
+                                onChangeSearchInput={onChangeSearchInput}
+                                onAddToCart={onAddToCart}
+                                isLoading={isLoading}
+                            />
+                            }
                         />
-                        }
-                    />
-                    <Route
-                        exact
-                        path='favorites'
-                        element={
-                            <Favorites />}
-                    />
+                        <Route
+                            exact
+                            path='/favorites'
+                            element={
+                                <Favorites />}
+                        />
 
-                    <Route
-                        exact
-                        path='orders'
-                        element={
-                            <Orders />}
-                    />
-                </Routes>
-            </div>
-        </AppContext.Provider>
+                        <Route
+                            exact
+                            path='/orders'
+                            element={
+                                <Orders />}
+                        />
+                    </Routes>
+                </div>
+            </AppContext.Provider>
+        </BrowserRouter>
+
     );
 };
 
