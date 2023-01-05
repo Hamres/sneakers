@@ -100,7 +100,7 @@ const App = () => {
     }
 
     return (
-        <BrowserRouter basename='/'>
+        <BrowserRouter basename='/sneakers'>
             <AppContext.Provider value={{
                 items,
                 cartItems,
