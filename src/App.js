@@ -123,7 +123,7 @@ const App = () => {
 
                 <Routes>
                     <Route
-                        path='/sneakers'
+                        path='/'
                         exact
                         element={<Home
                             items={items}
