@@ -123,7 +123,7 @@ const App = () => {
 
                 <Routes>
                     <Route
-                        path='/'
+                        path=''
                         exact
                         element={<Home
                             items={items}
@@ -139,14 +139,14 @@ const App = () => {
                     />
                     <Route
                         exact
-                        path='/favorites'
+                        path='favorites'
                         element={
                             <Favorites />}
                     />
 
                     <Route
                         exact
-                        path='/orders'
+                        path='orders'
                         element={
                             <Orders />}
                     />
