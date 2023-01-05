@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Header from "./components/Header";
 import Index from "./components/Drawer"
 import axios from "axios";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import AppContext from "./context";
